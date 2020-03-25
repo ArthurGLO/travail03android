@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ca.ulaval.ima.tp3">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,6 +11,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Description"
+            android:label="@string/Description_label"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".OffersByVehicles"
+            android:label="@string/list_offer"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Model"
+            android:label="@string/list_model"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"

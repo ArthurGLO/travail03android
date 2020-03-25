@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.main.Offers">
+    android:layout_height="match_parent">
 
     <ListView
-        android:id="@+id/brand_list"
+        android:id="@+id/model_list"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" />
 

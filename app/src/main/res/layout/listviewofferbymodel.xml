@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_height="131dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="match_parent"
+        android:background="#ffffff">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="153dp"
+            android:layout_height="130dp" />
+
+        <TextView
+            android:id="@+id/model_name"
+            android:layout_width="165dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="16dp"
+            android:layout_toEndOf="@id/imageView"
+            android:layout_toRightOf="@id/imageView"
+            android:paddingLeft="15dp"
+            android:textColor="#333"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/year"
+            android:layout_width="67dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/model_name"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="46dp"
+            android:layout_toEndOf="@id/imageView"
+            android:layout_toRightOf="@id/imageView"
+            android:paddingLeft="15dp"
+            android:text="@string/list_year"
+            android:textColor="#333"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/model_year_text"
+            android:layout_width="115dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="47dp"
+            android:layout_marginLeft="47dp"
+            android:layout_marginTop="46dp"
+            android:layout_toEndOf="@id/year"
+            android:layout_toRightOf="@id/year"
+            android:gravity="center_horizontal"
+            android:paddingLeft="15dp"
+            android:textColor="#333"
+            android:textSize="14dp"/>
+
+        <TextView
+            android:id="@+id/kilometer"
+            android:layout_width="108dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/year"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="75dp"
+            android:layout_toEndOf="@id/imageView"
+            android:layout_toRightOf="@id/imageView"
+            android:paddingLeft="15dp"
+            android:text="@string/list_kilometer"
+            android:textColor="#333"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/model_kilometer_text"
+            android:layout_width="114dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="75dp"
+            android:layout_toEndOf="@id/kilometer"
+            android:layout_toRightOf="@id/kilometer"
+            android:gravity="center_horizontal"
+            android:textColor="#333"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="56dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="100dp"
+            android:layout_toEndOf="@id/imageView"
+            android:layout_toRightOf="@id/imageView"
+            android:paddingLeft="15dp"
+            android:text="@string/list_price"
+            android:textColor="#333"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/model_price_text"
+            android:layout_width="114dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="59dp"
+            android:layout_marginLeft="59dp"
+            android:layout_marginTop="100dp"
+            android:layout_toEndOf="@id/price"
+            android:layout_toRightOf="@id/price"
+            android:gravity="center_horizontal"
+            android:textColor="#333"
+            android:textSize="14dp"/>
+
+    </RelativeLayout>
+</LinearLayout>

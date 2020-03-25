@@ -1,6 +1,32 @@
 <resources>
     <string name="app_name">Tp3</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
-    <string name="tab_text_3">Tab 3</string>
+    <string name="tab_text_1">OFFRES</string>
+    <string name="tab_text_2">VENDRE</string>
+    <string name="tab_text_3">MES ANNONCES</string>
+    <string name="list_offer">Liste des offres</string>
+    <string name="list_model">Modèles de voiture</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="list_year">Année:</string>
+    <string name="list_kilometer">Kilométrage:</string>
+    <string name="list_price">Prix:</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="Description_label">Vendre une voiture</string>
+    <string name="info">Information de la voiture</string>
+    <string name="info_brand">Marque:</string>
+    <string name="info_model">Modèle:</string>
+    <string name="info_year">Année:</string>
+    <string name="info_kilometer">Kilomètrage:</string>
+    <string name="info_transmission">Transmission:</string>
+    <string name="sale_price">Prix:</string>
+    <string name="vendor">Vendeur:</string>
+    <string name="vendor_name">Nom:</string>
+    <string name="vendor_mail">Courriel:</string>
+    <string name="owner">Propriétaire:</string>
+    <string name="car_desc">Description:</string>
+    <string name="info_contact">Contacter le vendeur</string>
+
+
+
 </resources>
