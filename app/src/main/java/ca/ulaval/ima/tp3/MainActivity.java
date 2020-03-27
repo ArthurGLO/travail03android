@@ -29,6 +29,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -42,14 +43,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 import ca.ulaval.ima.tp3.domain.Car;
+import ca.ulaval.ima.tp3.domain.Salor;
+import ca.ulaval.ima.tp3.ui.main.Advertisement;
 import ca.ulaval.ima.tp3.ui.main.Offers;
 import ca.ulaval.ima.tp3.ui.main.Sales;
 import ca.ulaval.ima.tp3.ui.main.SectionsPagerAdapter;
 import ca.ulaval.ima.tp3.ui.main.fragmentpaquets.UserDialog;
+import ca.ulaval.ima.tp3.ui.main.fragmentpaquets.UserDialogForAdvertisement;
+import ca.ulaval.ima.tp3.ui.main.utils.CustomListview;
 
 import org.json.*;
 
-public class MainActivity extends AppCompatActivity implements Offers.OffersFragmentListener, UserDialog.DialogListener, Sales.SaleFragmentListenner {
+public class MainActivity extends AppCompatActivity implements Offers.OffersFragmentListener,
+        Advertisement.AdvertisementListener,
+        UserDialog.DialogListener, UserDialogForAdvertisement.DialogFragmentListener,Sales.SaleFragmentListenner {
 
     private ArrayList<String> carArrayLst;
     private TextView textModelChoice;
@@ -60,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements Offers.OffersFrag
     private Spinner spinner;
     private TextView textviewYear;
     private String record = "";
+    private ListView myListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -452,4 +460,172 @@ public class MainActivity extends AppCompatActivity implements Offers.OffersFrag
         queue.add(postRequest);
     }
 
+    @Override
+    public void showDialog() {
+        ViewPager viewPager = findViewById(R.id.view_pager);
+
+        /**viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener(){
+            @Override public void onPageSelected(int position) {
+                if (position == 2) {
+                    UserDialogForAdvertisement userDialog = new UserDialogForAdvertisement();
+                    userDialog.show(getSupportFragmentManager(), "dialog");
+                }
+            }
+        });*/
+
+       UserDialogForAdvertisement userDialog = new UserDialogForAdvertisement();
+       userDialog.show(getSupportFragmentManager(), "dialog");
+
+    }
+
+
+    @Override
+    public void getAuthenticateForAdvertisement(final String userMail, final int idul) {
+        final RequestQueue queue = Volley.newRequestQueue(this);
+        final String url = "http://68.183.207.74/api/v1/account/login/";
+        StringRequest postRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response) {
+                        // response
+                        Log.e("Response", response);
+                        try {
+                            JSONObject c = new JSONObject(response);
+                            JSONObject content = c.getJSONObject("content");
+                            String token = content.getString("token");
+                            displayAdvert(token);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // error
+                        Log.d("Error.Response", error.toString());
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams()
+            {
+                Map<String, String>  params = new HashMap<>();
+                params.put("email", userMail);
+                params.put("identification_number", String.valueOf(idul));
+
+                return params;
+            }
+        };
+        queue.add(postRequest);
+    }
+
+    private void displayAdvert(final String myToken){
+
+        final ArrayList<String> offerTitle = new ArrayList<>();
+        final ArrayList<String> offerYear = new ArrayList<>();
+        final ArrayList<String> offerKilometer = new ArrayList<>();
+        final ArrayList<String> offerPrice = new ArrayList<>();
+        final ArrayList<String> offerImg = new ArrayList<>();
+
+        final RequestQueue queue = Volley.newRequestQueue(this);
+        final String url = "http://68.183.207.74/api/v1/offer/mine/";
+
+        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // display response
+                        final JSONArray jsonArray;
+                        try {
+                            jsonArray = response.getJSONArray("content");
+
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject c = jsonArray.getJSONObject(i);
+                                String myTitle = c.getJSONObject("model").getJSONObject("brand").getString("name")+" "+c.getJSONObject("model").getString("name");
+                                String myYear = c.getString("year");
+                                String myKilo = c.getString("kilometers");
+                                String myPrice = c.getString("price");
+                                String myImg = c.getString("image") ;
+                                offerImg.add(myImg);
+                                offerYear.add(myYear);
+                                offerKilometer.add(myKilo);
+                                offerPrice.add(myPrice);
+                                offerTitle.add(myTitle);
+                            }
+
+                            myListView = findViewById(R.id.advertisement_list);
+
+                            CustomListview customListview = new CustomListview(MainActivity.this,offerTitle,offerYear,offerKilometer,offerPrice,offerImg);
+
+                            myListView.setAdapter(customListview);
+                            myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                                    for (int i = 0; i < jsonArray.length(); i++) {
+                                        if(position==i){
+                                            try {
+                                                final JSONObject jsonContent = jsonArray.getJSONObject(i);
+                                                JSONObject objectModel = jsonContent.getJSONObject("model");
+                                                String modelName = objectModel.getString("name");
+                                                JSONObject brandObject = objectModel.getJSONObject("brand");
+                                                String brandName = brandObject.getString("name");
+                                                String img = jsonContent.getString("image");
+                                                int year = jsonContent.getInt("year");
+                                                int kilo = jsonContent.getInt("kilometers");
+                                                String trans = jsonContent.getString("transmission");
+                                                int price = jsonContent.getInt("price");
+
+                                                JSONObject objectSalor = jsonContent.getJSONObject("seller");
+                                                String salorLastName = objectSalor.getString("last_name");
+                                                String salorFirstName = objectSalor.getString("first_name");
+                                                String salorMail = objectSalor.getString("email");
+                                                Boolean owner = jsonContent.getBoolean("from_owner");
+                                                String desc = jsonContent.getString("description");
+
+                                                Car car = new Car(img,year,kilo,trans,owner,price,brandName,modelName,desc);
+                                                Salor salor = new Salor(salorFirstName,salorLastName,salorMail);
+                                                Intent intent = new Intent(MainActivity.this,Description.class);
+
+                                                intent.putExtra("descriptionData",car);
+                                                intent.putExtra("salorData",salor);
+
+                                                startActivity(intent);
+
+
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("Error.Response", error.toString());
+                    }
+                }
+        ){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String>  params = new HashMap<>();
+                params.put("Authorization","Basic"+myToken);
+
+                return params;
+            }
+        };
+
+// add it to the RequestQueue
+        queue.add(getRequest);
+    }
 }
