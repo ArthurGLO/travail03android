@@ -11,9 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Description"
-            android:label="@string/Description_label"
+        <activity android:name=".BrandAndModelCar"
+            android:label="@string/list_model"
             android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".Description"
+            android:label="@string/Description_label"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".OffersByVehicles"
             android:label="@string/list_offer"

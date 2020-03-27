@@ -36,6 +36,16 @@ public class Car implements Parcelable {
         this.modelName = modelName;
     }
 
+    public Car(int year , int kilometers ,String transmission,Boolean sale,int price , String brandName , String modelName){
+        this.sale = sale;
+        this.transmission = transmission;
+        this.year = year ;
+        this.kilometers = kilometers ;
+        this.price =  price ;
+        this.brandName = brandName ;
+        this.modelName = modelName;
+    }
+
     public int getKilometers() {
         return kilometers;
     }

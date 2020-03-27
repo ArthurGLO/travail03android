@@ -104,8 +104,6 @@ public class Model extends AppCompatActivity implements ModelFragment.ModeleFrag
                         android.R.layout.simple_list_item_1,models
                 );
 
-                Log.e("DEBUG", models.get(1));
-
                 listView.setAdapter(stringArrayAdapter);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override

@@ -16,7 +16,7 @@ public class Advertisement extends Fragment {
     public View onCreateView(
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.sales, container, false);
+        View root = inflater.inflate(R.layout.advertisement, container, false);
 
         return root;
     }
