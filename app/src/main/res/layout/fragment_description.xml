@@ -197,7 +197,7 @@
             <RelativeLayout
                 android:id="@+id/salorDescription"
                 android:layout_width="match_parent"
-                android:layout_height="220dp">
+                android:layout_height="236dp">
 
                 <TextView
                     android:id="@+id/salor"
@@ -249,12 +249,12 @@
 
                 <TextView
                     android:id="@+id/t8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="26dp"
+                    android:layout_width="222dp"
+                    android:layout_height="42dp"
                     android:layout_below="@+id/salorName"
                     android:layout_marginStart="92dp"
                     android:layout_marginLeft="92dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="5dp"
                     android:layout_toEndOf="@id/salorCouriel"
                     android:layout_toRightOf="@id/salorCouriel"
                     android:text="@string/info"
@@ -265,7 +265,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="26dp"
                     android:layout_below="@+id/salorCouriel"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="20dp"
                     android:paddingStart="30dp"
                     android:paddingLeft="30dp"
                     android:text="@string/owner"
@@ -277,30 +277,29 @@
                     android:layout_width="300dp"
                     android:layout_height="55dp"
                     android:layout_below="@+id/t9"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="30dp"
-                    android:background="#20639B"
-                    android:textColor="@color/cardview_light_background"
-                    android:layout_marginRight="30dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_
-                    android:text="@string/info_contact" />
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="30dp"
+                    android:background="#20639B"
+                    android:text="@string/info_contact"
+                    android:textColor="@color/cardview_light_background" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginTop="10dp"
                     android:layout_below="@+id/button"
+                    android:layout_marginTop="20dp"
                     android:background="#DCDCDC" />
 
                 <TextView
                     android:id="@+id/t9"
-                    android:layout_width="237dp"
-                    android:layout_height="29dp"
+                    android:layout_width="179dp"
+                    android:layout_height="30dp"
                     android:layout_below="@+id/salorCouriel"
-                    android:layout_marginStart="68dp"
-                    android:layout_marginLeft="68dp"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginStart="73dp"
+                    android:layout_marginLeft="73dp"
+                    android:layout_marginTop="20dp"
                     android:layout_toEndOf="@id/modelForOwner"
                     android:layout_toRightOf="@id/modelForOwner"
                     android:text="@string/info"

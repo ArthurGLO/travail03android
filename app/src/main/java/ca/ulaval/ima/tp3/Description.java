@@ -3,18 +3,22 @@ package ca.ulaval.ima.tp3;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
 import ca.ulaval.ima.tp3.domain.Car;
 import ca.ulaval.ima.tp3.domain.Salor;
 import ca.ulaval.ima.tp3.ui.main.fragmentpaquets.DescriptionFragment;
+
+import static java.net.Proxy.Type.HTTP;
 
 public class Description extends AppCompatActivity implements DescriptionFragment.DescriptionFragmentListener {
     private ImageView imageView;
@@ -76,9 +80,26 @@ public class Description extends AppCompatActivity implements DescriptionFragmen
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        sendMail();
                     }
                 });
             }
+    }
+
+    private void sendMail(){
+        textMail = findViewById(R.id.t8);
+        String mail = textMail.getText().toString();
+        String[] recipients = mail.split(",");
+        Intent i = new Intent(Intent.ACTION_SEND);
+        i.setType("message/rfc822");
+        i.putExtra(Intent.EXTRA_EMAIL  , recipients);
+        i.putExtra(Intent.EXTRA_SUBJECT, "subject of email");
+        i.putExtra(Intent.EXTRA_TEXT   , "body of email");
+        try {
+            startActivity(Intent.createChooser(i, "Send mail..."));
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+        }
+
     }
 }

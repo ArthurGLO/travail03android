@@ -27,6 +27,10 @@
     <string name="car_desc">Description:</string>
     <string name="info_contact">Contacter le vendeur</string>
 
+    <string name="form_model">Modèle:</string>
+    <string name="form_trans">Type de transmission:</string>
+    <string name="form_sale">Vendu par le propriétaire:</string>
+    <string name="form_button">Soumettre</string>
 
 
 </resources>
