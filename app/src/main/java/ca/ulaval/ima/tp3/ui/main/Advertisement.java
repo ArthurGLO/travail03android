@@ -23,7 +23,7 @@ public class Advertisement extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mListener.showDialog();
+        //mListener.showDialog();
 
     }
 
@@ -62,7 +62,7 @@ public class Advertisement extends Fragment {
     public void onResume() {
         super.onResume();
         if (getUserVisibleHint()) {
-            //mListener.showDialog();
+            mListener.showDialog();
         }
     }
 

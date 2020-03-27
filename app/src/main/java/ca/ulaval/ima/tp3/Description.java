@@ -61,13 +61,22 @@ public class Description extends AppCompatActivity implements DescriptionFragmen
                 imageView = findViewById(R.id.img);
                 button = findViewById(R.id.button);
 
+                String record = "";
+
+                if(car.getTransmission().equals("MA")){
+                    record = "Manuel";
+                }else if(car.getTransmission().equals("AT")){
+                    record = "Automatique";
+                }else if (car.getTransmission().equals("SM")){
+                    record = "Semi Automatique";
+                }
                 Picasso.with(this).load(car.getImg()).resize(380,230).into(imageView);
                 textBrand.setText(car.getBrandName());
                 textModel.setText(car.getModelName());
                 textYear.setText(String.valueOf(car.getYear()));
-                textkilometer.setText(String.valueOf(car.getKilometers()));
-                textTransmission.setText(car.getTransmission());
-                textPrice.setText(String.valueOf(car.getPrice()));
+                textkilometer.setText(String.valueOf(car.getKilometers())+" "+"km");
+                textTransmission.setText(record);
+                textPrice.setText(String.valueOf(car.getPrice())+"$");
                 textName.setText(salor.getSalorFirstName()+" "+salor.getSalorLastName());
                 textMail.setText(salor.getSalorMail());
                 if(car.getSale() == true){
