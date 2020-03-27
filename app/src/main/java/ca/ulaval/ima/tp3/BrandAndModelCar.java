@@ -59,10 +59,10 @@ public class BrandAndModelCar extends AppCompatActivity implements Sales.SaleFra
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         for (int i = 0; i < carlist.size(); i++) {
                             if(position==i){
-                                /**Intent intent = new Intent(BrandAndModelCar.this,MainActivity.class);
+                                Intent intent = new Intent(BrandAndModelCar.this,MainActivity.class);
                                 intent.putExtra("modelChoice",carlist.get(i));
-                                Sales sales = new Sales();
-                                startActivityForResult(intent,12345);*/
+
+                                startActivityForResult(intent,12345);
 
 
                             }
